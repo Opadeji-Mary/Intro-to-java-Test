@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+   <div class="col-6">
+    <div class="row">
+        <h1>Budget app</h1>
+        <input type="text" class="form-control-lg" placeholder="" id="Name"> <br>
+        <input type="text" class="form-control-lg" placeholder="" id="Item"> <br>
+        <input type="text" class="form-control-lg" placeholder="" id="Amount">
+        <br>
+        <button class="btn btn-success" onclick="submit()">Submit</button>
+        <div class="table" id="disp"></div>
+        <div class="table" id="display"></div>
+    </div>
+   </div>
+
+   <script>
+    var allItem = []
+    function submit(){
+        if(Name.value == "" || Item.value == "" || Amount.value == ""){
+            alert("enter your inputs")
+        }else{
+            var items={
+                name: Name.value,
+                Item: Item.value,
+                Amount: Amount.value,
+            }
+            allItem.push(items)
+            localStorage.setItem("item",JSON.stringify(allItem))
+            console.log(allItem)
+            displayItem()
+        }
+    }
+    function displayItem(){
+        disp.innerHTML+=`
+        <thead>
+         <th>S/N</th>
+         <th>Name</th>
+         <th>Items</th>
+         <th>Amount</th>
+        </thead>
+        
+        `
+        display.innerHTML = ""
+        for (let index = 0; index < allItem.length; index++) {
+            display.innerHTML += `<tr>
+         <td>${id.index}</td>
+         <td>${allItem[index].Name}</td>
+         <td>>${allItem[index].Item}</td>
+         <td>>${allItem[index].Amount}</td>
+         <button class="btn btn-danger" onclick="del(${index})">delete</button>
+        <button class="btn btn-warning" onclick="edit()">edit</button>
+        </tr>`
+        }
+        function del(){
+            allItem.splice(0,1)
+            console.log(del)
+        }
+    }
+   </script>
+</body>
+</html>

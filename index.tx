@@ -1,0 +1,10 @@
+section A
+1A What is array
+Array is linear collection of data from user interface to collect the list of data
+1B
+Array and it's functions
+Array.splice() to delete from the data
+Array.push() to add the list of data
+Array.filter() to fetch out from one of the data
+Array.reverse() to reverse back to the data
+ 
